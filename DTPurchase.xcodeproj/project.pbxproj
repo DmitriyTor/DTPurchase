@@ -7,137 +7,179 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D4D094AB23FC386900546767 /* DTPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094AA23FC386900546767 /* DTPurchase.swift */; };
-		D4D094B323FC38A100546767 /* DTIAPWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094B223FC38A100546767 /* DTIAPWrapper.swift */; };
-		D4D094B623FC38D100546767 /* DTIAPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094B523FC38D100546767 /* DTIAPProvider.swift */; };
-		D4D094B923FC38F600546767 /* DTIAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094B823FC38F600546767 /* DTIAPProduct.swift */; };
-		D4D094BD23FC397C00546767 /* DTPurchaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094BC23FC397C00546767 /* DTPurchaseStatus.swift */; };
-		D4D094C023FC3A7800546767 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094BF23FC3A7800546767 /* NumberFormatter+Extension.swift */; };
-		D4D094C323FC3FA700546767 /* DTPurchaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094C223FC3FA700546767 /* DTPurchaseProtocol.swift */; };
+		D44F6C2A23FC47B600238E78 /* DTPurchase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F6C2023FC47B600238E78 /* DTPurchase.framework */; };
+		D44F6C2F23FC47B600238E78 /* DTPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C2E23FC47B600238E78 /* DTPurchaseTests.swift */; };
+		D44F6C3123FC47B600238E78 /* DTPurchase.h in Headers */ = {isa = PBXBuildFile; fileRef = D44F6C2323FC47B600238E78 /* DTPurchase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D44F6C3B23FC47CA00238E78 /* DTPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C3A23FC47CA00238E78 /* DTPurchase.swift */; };
+		D44F6C4923FC47D300238E78 /* DTIAPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C3C23FC47D200238E78 /* DTIAPProvider.swift */; };
+		D44F6C4A23FC47D300238E78 /* DTIAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C3F23FC47D200238E78 /* DTIAPProduct.swift */; };
+		D44F6C4B23FC47D300238E78 /* DTIAPWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C4023FC47D200238E78 /* DTIAPWrapper.swift */; };
+		D44F6C4C23FC47D300238E78 /* NumberFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C4223FC47D200238E78 /* NumberFormatter+Extension.swift */; };
+		D44F6C4D23FC47D300238E78 /* DTPurchaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C4423FC47D200238E78 /* DTPurchaseStatus.swift */; };
+		D44F6C4E23FC47D300238E78 /* DTPurchaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C4623FC47D200238E78 /* DTPurchaseProtocol.swift */; };
+		D44F6C4F23FC47D300238E78 /* DTIAPProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C4823FC47D300238E78 /* DTIAPProvider.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D4D094A523FC386900546767 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXContainerItemProxy section */
+		D44F6C2B23FC47B600238E78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44F6C1723FC47B500238E78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44F6C1F23FC47B600238E78;
+			remoteInfo = DTPurchase;
 		};
-/* End PBXCopyFilesBuildPhase section */
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D4D094A723FC386900546767 /* libDTPurchase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDTPurchase.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4D094AA23FC386900546767 /* DTPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPurchase.swift; sourceTree = "<group>"; };
-		D4D094B223FC38A100546767 /* DTIAPWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTIAPWrapper.swift; sourceTree = "<group>"; };
-		D4D094B523FC38D100546767 /* DTIAPProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTIAPProvider.swift; sourceTree = "<group>"; };
-		D4D094B823FC38F600546767 /* DTIAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTIAPProduct.swift; sourceTree = "<group>"; };
-		D4D094BC23FC397C00546767 /* DTPurchaseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPurchaseStatus.swift; sourceTree = "<group>"; };
-		D4D094BF23FC3A7800546767 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
-		D4D094C223FC3FA700546767 /* DTPurchaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPurchaseProtocol.swift; sourceTree = "<group>"; };
+		D44F6C2023FC47B600238E78 /* DTPurchase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTPurchase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44F6C2323FC47B600238E78 /* DTPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTPurchase.h; sourceTree = "<group>"; };
+		D44F6C2423FC47B600238E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D44F6C2923FC47B600238E78 /* DTPurchaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DTPurchaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44F6C2E23FC47B600238E78 /* DTPurchaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTPurchaseTests.swift; sourceTree = "<group>"; };
+		D44F6C3023FC47B600238E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D44F6C3A23FC47CA00238E78 /* DTPurchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPurchase.swift; sourceTree = "<group>"; };
+		D44F6C3C23FC47D200238E78 /* DTIAPProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAPProvider.swift; sourceTree = "<group>"; };
+		D44F6C3F23FC47D200238E78 /* DTIAPProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAPProduct.swift; sourceTree = "<group>"; };
+		D44F6C4023FC47D200238E78 /* DTIAPWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAPWrapper.swift; sourceTree = "<group>"; };
+		D44F6C4223FC47D200238E78 /* NumberFormatter+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Extension.swift"; sourceTree = "<group>"; };
+		D44F6C4423FC47D200238E78 /* DTPurchaseStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPurchaseStatus.swift; sourceTree = "<group>"; };
+		D44F6C4623FC47D200238E78 /* DTPurchaseProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPurchaseProtocol.swift; sourceTree = "<group>"; };
+		D44F6C4823FC47D300238E78 /* DTIAPProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTIAPProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D4D094A423FC386900546767 /* Frameworks */ = {
+		D44F6C1D23FC47B600238E78 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D44F6C2623FC47B600238E78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44F6C2A23FC47B600238E78 /* DTPurchase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D4D0949E23FC386900546767 = {
+		D44F6C1623FC47B500238E78 = {
 			isa = PBXGroup;
 			children = (
-				D4D094A923FC386900546767 /* DTPurchase */,
-				D4D094A823FC386900546767 /* Products */,
+				D44F6C2223FC47B600238E78 /* DTPurchase */,
+				D44F6C2D23FC47B600238E78 /* DTPurchaseTests */,
+				D44F6C2123FC47B600238E78 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D4D094A823FC386900546767 /* Products */ = {
+		D44F6C2123FC47B600238E78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094A723FC386900546767 /* libDTPurchase.a */,
+				D44F6C2023FC47B600238E78 /* DTPurchase.framework */,
+				D44F6C2923FC47B600238E78 /* DTPurchaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D4D094A923FC386900546767 /* DTPurchase */ = {
+		D44F6C2223FC47B600238E78 /* DTPurchase */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094AA23FC386900546767 /* DTPurchase.swift */,
-				D4D094C123FC3F9300546767 /* Protocols */,
-				D4D094BE23FC3A6700546767 /* Extension */,
-				D4D094BB23FC397100546767 /* Helpers */,
-				D4D094B423FC38C500546767 /* Service Layer */,
-				D4D094B123FC388E00546767 /* Data Layer */,
+				D44F6C3A23FC47CA00238E78 /* DTPurchase.swift */,
+				D44F6C2323FC47B600238E78 /* DTPurchase.h */,
+				D44F6C2423FC47B600238E78 /* Info.plist */,
+				D44F6C3D23FC47D200238E78 /* Data Layer */,
+				D44F6C3C23FC47D200238E78 /* DTIAPProvider.swift */,
+				D44F6C4123FC47D200238E78 /* Extension */,
+				D44F6C4323FC47D200238E78 /* Helpers */,
+				D44F6C4523FC47D200238E78 /* Protocols */,
+				D44F6C4723FC47D300238E78 /* Service Layer */,
 			);
 			path = DTPurchase;
 			sourceTree = "<group>";
 		};
-		D4D094B123FC388E00546767 /* Data Layer */ = {
+		D44F6C2D23FC47B600238E78 /* DTPurchaseTests */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094B723FC38EB00546767 /* Models */,
-				D4D094B223FC38A100546767 /* DTIAPWrapper.swift */,
+				D44F6C2E23FC47B600238E78 /* DTPurchaseTests.swift */,
+				D44F6C3023FC47B600238E78 /* Info.plist */,
+			);
+			path = DTPurchaseTests;
+			sourceTree = "<group>";
+		};
+		D44F6C3D23FC47D200238E78 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				D44F6C3E23FC47D200238E78 /* Models */,
+				D44F6C4023FC47D200238E78 /* DTIAPWrapper.swift */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";
 		};
-		D4D094B423FC38C500546767 /* Service Layer */ = {
+		D44F6C3E23FC47D200238E78 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094B523FC38D100546767 /* DTIAPProvider.swift */,
-			);
-			path = "Service Layer";
-			sourceTree = "<group>";
-		};
-		D4D094B723FC38EB00546767 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				D4D094B823FC38F600546767 /* DTIAPProduct.swift */,
+				D44F6C3F23FC47D200238E78 /* DTIAPProduct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D4D094BB23FC397100546767 /* Helpers */ = {
+		D44F6C4123FC47D200238E78 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094BC23FC397C00546767 /* DTPurchaseStatus.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		D4D094BE23FC3A6700546767 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				D4D094BF23FC3A7800546767 /* NumberFormatter+Extension.swift */,
+				D44F6C4223FC47D200238E78 /* NumberFormatter+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		D4D094C123FC3F9300546767 /* Protocols */ = {
+		D44F6C4323FC47D200238E78 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D4D094C223FC3FA700546767 /* DTPurchaseProtocol.swift */,
+				D44F6C4423FC47D200238E78 /* DTPurchaseStatus.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D44F6C4523FC47D200238E78 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D44F6C4623FC47D200238E78 /* DTPurchaseProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		D44F6C4723FC47D300238E78 /* Service Layer */ = {
+			isa = PBXGroup;
+			children = (
+				D44F6C4823FC47D300238E78 /* DTIAPProvider.swift */,
+			);
+			path = "Service Layer";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D44F6C1B23FC47B600238E78 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44F6C3123FC47B600238E78 /* DTPurchase.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		D4D094A623FC386900546767 /* DTPurchase */ = {
+		D44F6C1F23FC47B600238E78 /* DTPurchase */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4D094AE23FC386900546767 /* Build configuration list for PBXNativeTarget "DTPurchase" */;
+			buildConfigurationList = D44F6C3423FC47B600238E78 /* Build configuration list for PBXNativeTarget "DTPurchase" */;
 			buildPhases = (
-				D4D094A323FC386900546767 /* Sources */,
-				D4D094A423FC386900546767 /* Frameworks */,
-				D4D094A523FC386900546767 /* CopyFiles */,
+				D44F6C1B23FC47B600238E78 /* Headers */,
+				D44F6C1C23FC47B600238E78 /* Sources */,
+				D44F6C1D23FC47B600238E78 /* Frameworks */,
+				D44F6C1E23FC47B600238E78 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -145,25 +187,47 @@
 			);
 			name = DTPurchase;
 			productName = DTPurchase;
-			productReference = D4D094A723FC386900546767 /* libDTPurchase.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = D44F6C2023FC47B600238E78 /* DTPurchase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D44F6C2823FC47B600238E78 /* DTPurchaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44F6C3723FC47B600238E78 /* Build configuration list for PBXNativeTarget "DTPurchaseTests" */;
+			buildPhases = (
+				D44F6C2523FC47B600238E78 /* Sources */,
+				D44F6C2623FC47B600238E78 /* Frameworks */,
+				D44F6C2723FC47B600238E78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D44F6C2C23FC47B600238E78 /* PBXTargetDependency */,
+			);
+			name = DTPurchaseTests;
+			productName = DTPurchaseTests;
+			productReference = D44F6C2923FC47B600238E78 /* DTPurchaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D4D0949F23FC386900546767 /* Project object */ = {
+		D44F6C1723FC47B500238E78 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Dmitriy Toropkin";
 				TargetAttributes = {
-					D4D094A623FC386900546767 = {
+					D44F6C1F23FC47B600238E78 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+					D44F6C2823FC47B600238E78 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
-			buildConfigurationList = D4D094A223FC386900546767 /* Build configuration list for PBXProject "DTPurchase" */;
+			buildConfigurationList = D44F6C1A23FC47B500238E78 /* Build configuration list for PBXProject "DTPurchase" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,35 +235,70 @@
 				en,
 				Base,
 			);
-			mainGroup = D4D0949E23FC386900546767;
-			productRefGroup = D4D094A823FC386900546767 /* Products */;
+			mainGroup = D44F6C1623FC47B500238E78;
+			productRefGroup = D44F6C2123FC47B600238E78 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4D094A623FC386900546767 /* DTPurchase */,
+				D44F6C1F23FC47B600238E78 /* DTPurchase */,
+				D44F6C2823FC47B600238E78 /* DTPurchaseTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		D44F6C1E23FC47B600238E78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44F6C2723FC47B600238E78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		D4D094A323FC386900546767 /* Sources */ = {
+		D44F6C1C23FC47B600238E78 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4D094B323FC38A100546767 /* DTIAPWrapper.swift in Sources */,
-				D4D094BD23FC397C00546767 /* DTPurchaseStatus.swift in Sources */,
-				D4D094C323FC3FA700546767 /* DTPurchaseProtocol.swift in Sources */,
-				D4D094B623FC38D100546767 /* DTIAPProvider.swift in Sources */,
-				D4D094B923FC38F600546767 /* DTIAPProduct.swift in Sources */,
-				D4D094AB23FC386900546767 /* DTPurchase.swift in Sources */,
-				D4D094C023FC3A7800546767 /* NumberFormatter+Extension.swift in Sources */,
+				D44F6C4B23FC47D300238E78 /* DTIAPWrapper.swift in Sources */,
+				D44F6C3B23FC47CA00238E78 /* DTPurchase.swift in Sources */,
+				D44F6C4E23FC47D300238E78 /* DTPurchaseProtocol.swift in Sources */,
+				D44F6C4F23FC47D300238E78 /* DTIAPProvider.swift in Sources */,
+				D44F6C4D23FC47D300238E78 /* DTPurchaseStatus.swift in Sources */,
+				D44F6C4923FC47D300238E78 /* DTIAPProvider.swift in Sources */,
+				D44F6C4C23FC47D300238E78 /* NumberFormatter+Extension.swift in Sources */,
+				D44F6C4A23FC47D300238E78 /* DTIAPProduct.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D44F6C2523FC47B600238E78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44F6C2F23FC47B600238E78 /* DTPurchaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D44F6C2C23FC47B600238E78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44F6C1F23FC47B600238E78 /* DTPurchase */;
+			targetProxy = D44F6C2B23FC47B600238E78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		D4D094AC23FC386900546767 /* Debug */ = {
+		D44F6C3223FC47B600238E78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,6 +331,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -256,10 +356,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		D4D094AD23FC386900546767 /* Release */ = {
+		D44F6C3323FC47B600238E78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,6 +394,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -310,30 +413,95 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		D4D094AF23FC386900546767 /* Debug */ = {
+		D44F6C3523FC47B600238E78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2W82R63KFN;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DTPurchase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.DTPurchase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D4D094B023FC386900546767 /* Release */ = {
+		D44F6C3623FC47B600238E78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2W82R63KFN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DTPurchase/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.DTPurchase;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D44F6C3823FC47B600238E78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2W82R63KFN;
-				OTHER_LDFLAGS = "-ObjC";
+				INFOPLIST_FILE = DTPurchaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.DTPurchaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D44F6C3923FC47B600238E78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2W82R63KFN;
+				INFOPLIST_FILE = DTPurchaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = DmitriyToropkin.DTPurchaseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,25 +510,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4D094A223FC386900546767 /* Build configuration list for PBXProject "DTPurchase" */ = {
+		D44F6C1A23FC47B500238E78 /* Build configuration list for PBXProject "DTPurchase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4D094AC23FC386900546767 /* Debug */,
-				D4D094AD23FC386900546767 /* Release */,
+				D44F6C3223FC47B600238E78 /* Debug */,
+				D44F6C3323FC47B600238E78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4D094AE23FC386900546767 /* Build configuration list for PBXNativeTarget "DTPurchase" */ = {
+		D44F6C3423FC47B600238E78 /* Build configuration list for PBXNativeTarget "DTPurchase" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D4D094AF23FC386900546767 /* Debug */,
-				D4D094B023FC386900546767 /* Release */,
+				D44F6C3523FC47B600238E78 /* Debug */,
+				D44F6C3623FC47B600238E78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D44F6C3723FC47B600238E78 /* Build configuration list for PBXNativeTarget "DTPurchaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44F6C3823FC47B600238E78 /* Debug */,
+				D44F6C3923FC47B600238E78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D4D0949F23FC386900546767 /* Project object */;
+	rootObject = D44F6C1723FC47B500238E78 /* Project object */;
 }
