@@ -59,7 +59,12 @@ extension DTIAPProvider {
         } else {
             self.fetchProducts(completion: completion)
         }
-        
+    }
+    
+    /// Force update products
+    /// - Parameter completion: callback block with products
+    public func updateAvailableItem(completion: @escaping([DTIAPProduct]) -> Void) {
+        self.fetchProducts(completion: completion)
     }
     
     /// Method for bought product
@@ -75,6 +80,8 @@ extension DTIAPProvider {
         }
     }
     
+    /// Restore purchase
+    /// - Parameter completion: callback block
     public func restorePurchase(completion: @escaping (DTPurchaseStatus) -> ()) {
         self.iAPWrapper.restorePurchase { (status, product, transaction) in
             completion(status)
@@ -84,6 +91,7 @@ extension DTIAPProvider {
         }
     }
     
+    /// Clean local products
     public func cleanData() {
         defaults.set(nil, forKey: DTDefaultsKeys.iap_purchase_cache)
     }
