@@ -35,7 +35,8 @@ public final class DTIAPWrapper: NSObject {
         
         self.fetchProductCompletion = complition
         if self.productIds.isEmpty {
-            complition([], DTPurchaseStatusAlert.resultPurchase(.setProductIds))
+            let status = DTPurchaseStatus(status: .setProductIds, detailError: "Product id is empty")
+            complition([], status)
         }
         else {
             productsRequest = SKProductsRequest(productIdentifiers: Set(self.productIds))
@@ -52,7 +53,8 @@ public final class DTIAPWrapper: NSObject {
         
         if self.canMakePurchases() {
             guard let _product = self.products.filter({ $0.productIdentifier == product.productIdentifier}).first else {
-                completion(DTPurchaseStatusAlert.resultPurchase(.disabled), nil, nil)
+                let status = DTPurchaseStatus(status: .disabled, detailError: nil)
+                completion(status, nil, nil)
                 return
             }
             let payment = SKPayment(product: _product)
@@ -62,7 +64,8 @@ public final class DTIAPWrapper: NSObject {
             NSLog("Product to purchase: \(product.productIdentifier)")
             productID = product.productIdentifier
         } else {
-            completion(DTPurchaseStatusAlert.resultPurchase(.disabled), nil, nil)
+            let status = DTPurchaseStatus(status: .disabled, detailError: "Method SKPaymentQueue.canMakePayments return false")
+            completion(status, nil, nil)
         }
     }
     
@@ -123,12 +126,15 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
-        if response.products.count > 0, let complition = self.fetchProductCompletion {
-            complition(response.products.map { DTIAPProduct(product: $0) }, DTPurchaseStatusAlert.resultPurchase(.fetched))
+        if response.products.count > 0, let completion = self.fetchProductCompletion {
+            let status = DTPurchaseStatus(status: .fetched, detailError: nil)
+            completion(response.products.map { DTIAPProduct(product: $0) }, status)
             self.products = response.products
         } else {
-            if let complition = self.fetchProductCompletion {
-                complition([], DTPurchaseStatusAlert.resultPurchase(.failedFetch))
+            if let completion = self.fetchProductCompletion {
+                let status = DTPurchaseStatus(status: .failedFetch, detailError: "Cant fetch products or returned empty list")
+                
+                completion([], status)
             }
         }
     }
@@ -137,7 +143,8 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         if let complition = self.purchaseProductCompletion {
-            complition(DTPurchaseStatusAlert.resultPurchase(.restored), nil, nil)
+            let status = DTPurchaseStatus(status: .restored, detailError: nil)
+            complition(status, nil, nil)
         }
     }
     
@@ -151,21 +158,24 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
             case .purchased:
                 
                 SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let complition = self.purchaseProductCompletion {
-                    complition(DTPurchaseStatusAlert.resultPurchase(.purchased), self.productToPurchase, trans)
+                if let completion = self.purchaseProductCompletion {
+                    let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
+                    completion(status, self.productToPurchase, trans)
                 }
                 break
                 
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let complition = self.purchaseProductCompletion {
-                    complition(DTPurchaseStatusAlert.resultPurchase(.failedBuy), nil, nil)
+                if let completion = self.purchaseProductCompletion {
+                    let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
+                    completion(status, nil, nil)
                 }
                 break
             case .restored:
                 SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let complition = self.purchaseProductCompletion {
-                    complition(DTPurchaseStatusAlert.resultPurchase(.restored), nil, nil)
+                if let completion = self.purchaseProductCompletion {
+                    let status = DTPurchaseStatus(status: .restored, detailError: trans.error?.localizedDescription)
+                    completion(status, nil, nil)
                 }
                 break
                 

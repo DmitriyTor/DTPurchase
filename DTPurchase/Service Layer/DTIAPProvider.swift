@@ -36,7 +36,7 @@ public final class DTIAPProvider {
     /// Достаем продукты с сервака эппл
     private func fetchProducts(completion: (([DTIAPProduct]) -> Void)?) {
         self.iAPWrapper.fetchAvailableProducts { (products, status) in
-            if status != .fetched {
+            if status.status != .fetched {
                 self.getProductsFromUserDefaults()
             } else {
                 self.availableProduct = products
@@ -72,7 +72,6 @@ extension DTIAPProvider {
     /// - Parameter completion: callback block
     public func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> () ) {
         self.iAPWrapper.purchase(product: product) { (status, product, transaction) in
-            print("PURCHASE \(String(describing: product?.title)) with status \(status.message)")
             completion(status)
             self.iAPWrapper.getReceipt(isNeedToUpdate: self.receiptAlwaysFromServer) { (receipt) in
                 self.delegate?.DTPurchaseReturn(receipt: receipt, after: .purchase)

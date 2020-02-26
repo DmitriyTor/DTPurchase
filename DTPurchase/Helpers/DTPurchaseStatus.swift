@@ -8,7 +8,13 @@
 
 import Foundation
 
-public enum DTPurchaseStatus {
+public struct DTPurchaseStatus {
+    
+    public var status: DTPurchaseStatusCommon
+    public var detailError: String?
+}
+
+public enum DTPurchaseStatusCommon {
     
     case setProductIds
     case disabled
@@ -28,16 +34,5 @@ public enum DTPurchaseStatus {
         case .failedFetch: return "Error while trying to fetch! :("
         case .fetched: return "Fetched successful!"
         }
-    }
-}
-
-
-struct DTPurchaseStatusAlert {
-    
-    @discardableResult
-    static func resultPurchase(_ status: DTPurchaseStatus) -> DTPurchaseStatus {
-        NSLog("\(status.message)")
-    
-        return status
     }
 }
