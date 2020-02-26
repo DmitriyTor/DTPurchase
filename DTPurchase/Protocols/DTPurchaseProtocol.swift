@@ -8,19 +8,16 @@
 
 import Foundation
 
-public protocol DTIAPProviderProtocol {
+public enum DTPurchaseReceiptAction {
+    case purchase
+    case restore
+    case fetch
+}
+
+public protocol DTPurchaseDelegate: class {
     
-    /// Method for bought product
-    /// - Parameter product: product
-    /// - Parameter completion: callback block
-    func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> () )
-    
-    /// List of available products
-    func getAvailableItem(completion: @escaping([DTIAPProduct]) -> Void)
-    
-    /// Восстановление покупок
-    func restorePurchase(completion: @escaping (DTPurchaseStatus) -> ())
-    
-    //очистка кеша покупок
-    func cleanData()
+    /// Methods return receipt after action
+    /// - Parameter receipt: current receipt
+    /// - Parameter action: which action was
+    func DTPurchaseReturn(receipt: String, after action: DTPurchaseReceiptAction)
 }

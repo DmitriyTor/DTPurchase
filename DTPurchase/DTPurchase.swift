@@ -11,4 +11,4 @@ struct DTDefaultsKeys {
     static let receipt_last_date = "com.eskaria.parlist.iap.receip.send.date"
 }
 
-public typealias DTPurchase = DTIAPProviderProtocol
+public typealias DTPurchase = DTIAPProvider

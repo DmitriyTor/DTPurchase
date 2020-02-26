@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIApplication {
+    
     public static var productIDs: [String]? {
         return Bundle.main.object(forInfoDictionaryKey: "DTPurchase") as? [String]
     }
