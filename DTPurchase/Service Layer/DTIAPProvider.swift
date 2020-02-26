@@ -10,21 +10,18 @@ import UIKit
 
 public final class DTIAPProvider {
     
-    public weak var delegate: DTPurchaseDelegate?
-    
     private let defaults = UserDefaults.standard
     let iAPWrapper = DTIAPWrapper()
     
-    public init(delegate: DTPurchaseDelegate?) {
-        self.delegate = delegate
+    public init() {
         self.setProductIds()
     }
     
     private func setProductIds() {
-        guard let delegate = self.delegate else {
-            fatalError("Delegate is nil!")
+        guard let ids = UIApplication.productIDs else {
+            fatalError("Set array of ids in Info.plist by key DTPurchase!")
         }
-        self.iAPWrapper.setProductIds(ids: delegate.getProductIDs())
+        self.iAPWrapper.setProductIds(ids: ids)
         self.fetchProducts(completion: nil)
     }
     
@@ -74,27 +71,6 @@ extension DTIAPProvider: DTIAPProviderProtocol {
         defaults.set(nil, forKey: DTDefaultsKeys.iap_purchase_cache)
     }
     
-//    /// отправка ресепта в случае запуска приложения раз в 4 дня
-//    func sendBackgroundReceipt() {
-//        let currentDate = Date()
-//        guard let lastSendDay = self.getLastReceiptSendDate() else {
-//            self.sendReceipt2Server(receiptIsFromServer: true) { (error) in
-//                if error == nil {
-//                    self.setLastReceiptSendDate()
-//                }
-//            }
-//            return
-//        }
-//        let diffInDays = Calendar.current.dateComponents([.day], from: currentDate, to: lastSendDay).day ?? 5
-//        if diffInDays > 4 {
-//            self.sendReceipt2Server(receiptIsFromServer: true) { (error) in
-//                if error == nil {
-//                    self.setLastReceiptSendDate()
-//                }
-//            }
-//        }
-//    }
-    
 }
 
 // MARK: - For cache products
@@ -117,26 +93,6 @@ extension DTIAPProvider {
                 self.availableProduct = products
             }
         }
-    }
-    
-    /// сохранения дня отправки ресепта
-    func setLastReceiptSendDate() {
-        let encoder = JSONEncoder()
-        let date = Date()
-        if let data = try? encoder.encode(date) {
-            defaults.set(data, forKey: DTDefaultsKeys.receipt_last_date)
-        }
-    }
-    
-    /// День отправки ресепта последний раз
-    func getLastReceiptSendDate() -> Date? {
-        if let savedDate = UserDefaults.standard.object(forKey: DTDefaultsKeys.receipt_last_date) as? Data {
-            let decoder = JSONDecoder()
-            if let date = try? decoder.decode(Date.self, from: savedDate) {
-                return date
-            }
-        }
-        return nil
     }
 }
 

@@ -10,12 +10,12 @@ import Foundation
 
 public protocol DTIAPProviderProtocol {
     
-    /// Метод покупки продукта
-    /// - Parameter product: сам продукт
-    /// - Parameter completion: комплишн блок с статусом
+    /// Method for bought product
+    /// - Parameter product: product
+    /// - Parameter completion: callback block
     func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> () )
     
-    /// Список доступных продуктов
+    /// List of available products
     func getAvailableItem(completion: @escaping([DTIAPProduct]) -> Void)
     
     /// Восстановление покупок
@@ -23,9 +23,4 @@ public protocol DTIAPProviderProtocol {
     
     //очистка кеша покупок
     func cleanData()
-}
-
-public protocol DTPurchaseDelegate: class {
-    
-    func getProductIDs() -> [String]
 }

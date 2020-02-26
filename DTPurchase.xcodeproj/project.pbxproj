@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D43A17BF2406B0CE007FB8AF /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43A17BE2406B0CE007FB8AF /* UIApplication+Extension.swift */; };
 		D44F6C2A23FC47B600238E78 /* DTPurchase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F6C2023FC47B600238E78 /* DTPurchase.framework */; };
 		D44F6C2F23FC47B600238E78 /* DTPurchaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F6C2E23FC47B600238E78 /* DTPurchaseTests.swift */; };
 		D44F6C3123FC47B600238E78 /* DTPurchase.h in Headers */ = {isa = PBXBuildFile; fileRef = D44F6C2323FC47B600238E78 /* DTPurchase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D43A17BE2406B0CE007FB8AF /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		D44F6C2023FC47B600238E78 /* DTPurchase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTPurchase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F6C2323FC47B600238E78 /* DTPurchase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTPurchase.h; sourceTree = "<group>"; };
 		D44F6C2423FC47B600238E78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				D44F6C4223FC47D200238E78 /* NumberFormatter+Extension.swift */,
+				D43A17BE2406B0CE007FB8AF /* UIApplication+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				D44F6C4B23FC47D300238E78 /* DTIAPWrapper.swift in Sources */,
 				D44F6C3B23FC47CA00238E78 /* DTPurchase.swift in Sources */,
+				D43A17BF2406B0CE007FB8AF /* UIApplication+Extension.swift in Sources */,
 				D44F6C4E23FC47D300238E78 /* DTPurchaseProtocol.swift in Sources */,
 				D44F6C4F23FC47D300238E78 /* DTIAPProvider.swift in Sources */,
 				D44F6C4D23FC47D300238E78 /* DTPurchaseStatus.swift in Sources */,
