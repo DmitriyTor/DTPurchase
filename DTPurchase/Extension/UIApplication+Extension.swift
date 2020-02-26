@@ -8,8 +8,8 @@
 
 import UIKit
 
-public extension UIApplication {
-    static var productIDs: [String]? {
+extension UIApplication {
+    public static var productIDs: [String]? {
         return Bundle.main.object(forInfoDictionaryKey: "DTPurchase") as? [String]
     }
 }
