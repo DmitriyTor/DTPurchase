@@ -7,8 +7,7 @@
 //
 
 struct DTDefaultsKeys {
-    static let iap_purchase_cache = "com.eskaria.parlist.iap.purchase.cache"
-    static let receipt_last_date = "com.eskaria.parlist.iap.receip.send.date"
+    static let iap_purchase_cache = "com.DmitriyToropkin.DTPurchase.iap.purchase.cache"
 }
 
 public typealias DTPurchase = DTIAPProvider
