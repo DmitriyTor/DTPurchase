@@ -143,8 +143,16 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         if let complition = self.purchaseProductCompletion {
-            let status = DTPurchaseStatus(status: .restored, detailError: nil)
+            let status = DTPurchaseStatus(status: .successRestored, detailError: nil)
             complition(status, nil, nil)
+        }
+    }
+    
+    @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        if let completion = self.purchaseProductCompletion {
+            let status = DTPurchaseStatus(status: .failedRestore, detailError: error.localizedDescription)
+            completion(status, nil, nil)
         }
     }
     
@@ -174,7 +182,7 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
             case .restored:
                 SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                 if let completion = self.purchaseProductCompletion {
-                    let status = DTPurchaseStatus(status: .restored, detailError: trans.error?.localizedDescription)
+                    let status = DTPurchaseStatus(status: .successRestored, detailError: trans.error?.localizedDescription)
                     completion(status, nil, nil)
                 }
                 break
