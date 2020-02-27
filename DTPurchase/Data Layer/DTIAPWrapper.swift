@@ -175,7 +175,7 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
             case .failed:
                 SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                 if let completion = self.purchaseProductCompletion {
-                    let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
+                    let status = DTPurchaseStatus(status: .failedBuy, detailError: trans.error?.localizedDescription)
                     completion(status, nil, nil)
                 }
                 break
