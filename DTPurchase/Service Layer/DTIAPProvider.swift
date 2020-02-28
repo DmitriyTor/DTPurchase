@@ -27,7 +27,7 @@ public final class DTIAPProvider {
     /// Init with id purchase in init
     /// - Parameter productIDs: product ids from app connet
     public init(productIDs: [String]) {
-        self.setProductIds()
+        self.setProductIds(productIDs: productIDs)
     }
     
     private func setProductIds(productIDs: [String]? = nil) {
