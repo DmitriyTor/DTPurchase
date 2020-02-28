@@ -12,18 +12,30 @@ public final class DTIAPProvider {
     
     private let defaults = UserDefaults.standard
     private let iAPWrapper = DTIAPWrapper()
-
+    
     /// Delegate for extension your purchase class (f.e. can return receipt)
     public weak var delegate: DTPurchaseDelegate?
     
     /// If true - receipt get from Apple Server and then returned in DTPurchaseReturn(receipt...) func
     public var receiptAlwaysFromServer = false
     
+    /// Init with get producttt ids from Info.plist by key DTPurchase!
     public init() {
         self.setProductIds()
     }
     
-    private func setProductIds() {
+    /// Init with id purchase in init
+    /// - Parameter productIDs: product ids from app connet
+    public init(productIDs: [String]) {
+        self.setProductIds()
+    }
+    
+    private func setProductIds(productIDs: [String]? = nil) {
+        if let ids = productIDs {
+            self.iAPWrapper.setProductIds(ids: ids)
+            self.fetchProducts(completion: nil)
+            return
+        }
         guard let ids = UIApplication.productIDs else {
             fatalError("Set array of ids in Info.plist by key DTPurchase!")
         }
