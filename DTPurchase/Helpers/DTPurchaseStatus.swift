@@ -25,7 +25,7 @@ public enum DTPurchaseStatusCommon {
     case failedFetch
     case fetched
     
-    var message: String{
+    public var message: String{
         switch self {
         case .setProductIds: return "Product ids not set, call setProductIds method!"
         case .disabled: return "Purchases are disabled in your device!"
