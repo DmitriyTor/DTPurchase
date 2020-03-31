@@ -24,6 +24,7 @@ public enum DTPurchaseStatusCommon {
     case failedBuy
     case failedFetch
     case fetched
+    case failed
     
     public var message: String{
         switch self {
@@ -35,6 +36,7 @@ public enum DTPurchaseStatusCommon {
         case .failedBuy: return "Error while trying to buy! :("
         case .failedFetch: return "Error while trying to fetch! :("
         case .fetched: return "Fetched successful!"
+        case .failed: return "Неизвестная ошибка при транзакции покупки"
         }
     }
 }
