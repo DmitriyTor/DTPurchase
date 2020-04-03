@@ -142,9 +142,17 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     // restore product
     @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        if let complition = self.purchaseProductCompletion {
-            let status = DTPurchaseStatus(status: .restored, detailError: nil)
-            complition(status, nil, nil)
+        if let completion = self.purchaseProductCompletion {
+            let status = DTPurchaseStatus(status: .successRestored, detailError: nil)
+            completion(status, nil, nil)
+        }
+    }
+    
+    @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        if let completion = self.purchaseProductCompletion {
+            let status = DTPurchaseStatus(status: .failedRestore, detailError: error.localizedDescription)
+            completion(status, nil, nil)
         }
     }
     
@@ -153,51 +161,46 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for transaction:AnyObject in transactions {
-        if let trans = transaction as? SKPaymentTransaction {
-            switch trans.transactionState {
-            case .purchased:
+            if let trans = transaction as? SKPaymentTransaction {
                 
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let completion = self.purchaseProductCompletion {
-                    let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
-                    completion(status, self.productToPurchase, trans)
-                }
-                break
-                
-            case .failed:
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let completion = self.purchaseProductCompletion {
-                    let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
-                    completion(status, nil, nil)
-                }
-                break
-            case .restored:
-                SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                if let completion = self.purchaseProductCompletion {
-                    let status = DTPurchaseStatus(status: .restored, detailError: trans.error?.localizedDescription)
-                    completion(status, nil, nil)
-                }
-                break
-                
-            default: break
-            }}}
+                switch trans.transactionState {
+                case .purchased:
+                    if let completion = self.purchaseProductCompletion {
+                        let status = DTPurchaseStatus(status: .purchased, detailError: trans.error?.localizedDescription)
+                        completion(status, self.productToPurchase, trans)
+                    }
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                case .failed:
+                    if let completion = self.purchaseProductCompletion {
+                        let status = DTPurchaseStatus(status: .failed, detailError: trans.error?.localizedDescription)
+                        completion(status, nil, nil)
+                    }
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                case .restored:
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                    
+                default: break
+                }}}
     }
     
 }
 
 extension SKProduct {
-
+    
     var localizedPrice: String {
         if self.price == 0.00 {
             return "Free"
         } else {
             let formatter = NumberFormatter().currencyFormatter()
             formatter.locale = self.priceLocale
-
+            
             guard let formattedPrice = formatter.string(from: self.price) else {
                 return "N/A"
             }
-
+            
             return formattedPrice
         }
     }

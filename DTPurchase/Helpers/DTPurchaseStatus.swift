@@ -18,21 +18,23 @@ public enum DTPurchaseStatusCommon {
     
     case setProductIds
     case disabled
-    case restored
+    case successRestored
+    case failedRestore
     case purchased
-    case failedBuy
     case failedFetch
     case fetched
+    case failed
     
-    var message: String{
+    public var message: String{
         switch self {
         case .setProductIds: return "Product ids not set, call setProductIds method!"
         case .disabled: return "Purchases are disabled in your device!"
-        case .restored: return "You've successfully restored your purchase!"
+        case .successRestored: return "You've successfully restored your purchase!"
+        case .failedRestore: return "You've error when restore"
         case .purchased: return "You've successfully bought this purchase!"
-        case .failedBuy: return "Error while trying to buy! :("
         case .failedFetch: return "Error while trying to fetch! :("
         case .fetched: return "Fetched successful!"
+        case .failed: return "Error while transaction execute:("
         }
     }
 }
