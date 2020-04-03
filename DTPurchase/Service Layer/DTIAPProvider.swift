@@ -107,6 +107,10 @@ extension DTIAPProvider {
         defaults.set(nil, forKey: DTDefaultsKeys.iap_purchase_cache)
     }
     
+    public func getOnlineReceipt(completion: @escaping (String) -> Void) {
+        self.getReceipt(isNeedToUpdate: true, completion: completion)
+    }
+    
     /// Request receipt
     /// - Parameters:
     ///   - isNeedToUpdate: forcibly get from server
