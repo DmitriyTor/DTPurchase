@@ -130,7 +130,7 @@ extension DTIAPProvider {
     /// - Parameters:
     ///   - isNeedToUpdate: forcibly get from server
     ///   - completion: callback block
-    func getReceipt(from type: DTPurchaseReceiptType, completion: @escaping (String) -> Void) {
+    public func getReceipt(from type: DTPurchaseReceiptType, completion: @escaping (String) -> Void) {
         self.iAPWrapper.getReceipt(from: type, completion: completion)
     }
 
