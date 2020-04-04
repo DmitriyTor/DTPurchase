@@ -76,16 +76,16 @@ public final class DTIAPWrapper: NSObject {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
-    func getReceipt(isNeedToUpdate: Bool, completion: @escaping (_ receipt: String) -> Void) {
+    func getReceipt(from type: DTPurchaseReceiptType, completion: @escaping (_ receipt: String) -> Void) {
         self.receiptCompletion = completion
-        self.prepareReceipt(isNeedToUpdate: isNeedToUpdate)
+        self.prepareReceipt(from: type)
     }
     
     /// get receipt for send to server
     /// - Parameter isFromServer: загрузить с сервера или локальные
-    private func prepareReceipt(isNeedToUpdate: Bool) {
+    private func prepareReceipt(from type: DTPurchaseReceiptType) {
         if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
-            FileManager.default.fileExists(atPath: appStoreReceiptURL.path), !isNeedToUpdate {
+            FileManager.default.fileExists(atPath: appStoreReceiptURL.path), type == .device {
             do {
                 let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
                 print(receiptData)
@@ -113,7 +113,7 @@ extension DTIAPWrapper: SKProductsRequestDelegate, SKPaymentTransactionObserver,
     // Request receipt success
     @available(*, deprecated, message: "Не использовать метод. Необходим для протокола StoreKit")
     public func requestDidFinish(_ request: SKRequest) {
-        self.prepareReceipt(isNeedToUpdate: false)
+        self.prepareReceipt(from: .device)
     }
     
     // Request receipt failed
