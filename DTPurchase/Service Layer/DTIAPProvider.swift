@@ -18,13 +18,16 @@ public final class DTIAPProvider {
     /// Delegate for extension your purchase class (f.e. can return receipt)
     public weak var delegate: DTPurchaseDelegate?
 
-    /// If true - receipt get from Apple Server and then returned in DTPurchaseReturn(receipt...) func
-    public var receiptAlwaysFromServer = false
+    /// If server - receipt get from Apple Server and then returned in DTPurchaseReturn(receipt...) func
+    var receiptFrom: DTPurchaseReceiptType
 
     /// Init with get products ids from Info.plist by key DTPurchase!
     /// - Parameter defaults: UserDefaults - Optional parameter
-    public init(on defaults: UserDefaults = UserDefaults.standard) {
+    /// - Parameter getReceiptFrom: From where return receipt (server\device)
+    public init(on defaults: UserDefaults = UserDefaults.standard,
+                getReceiptFrom: DTPurchaseReceiptType = .device) {
         self.defaults = defaults
+        self.receiptFrom = getReceiptFrom
         self.setProductIds()
     }
 
@@ -32,8 +35,12 @@ public final class DTIAPProvider {
     /// - Parameters:
     ///     - productIDs: product ids from appstore connet
     ///     - defaults: UserDefaults - Optional parameter
-    public init(productIDs: [String], on defaults: UserDefaults = UserDefaults.standard) {
+    ///     - getReceiptFrom: From where return receipt (server\device)
+    public init(productIDs: [String],
+                on defaults: UserDefaults = UserDefaults.standard,
+                getReceiptFrom: DTPurchaseReceiptType = .device) {
         self.defaults = defaults
+        self.receiptFrom = getReceiptFrom
         self.setProductIds(productIDs: productIDs)
     }
 
@@ -64,7 +71,7 @@ extension DTIAPProvider {
                 self.availableProduct = products
                 completion?(self.availableProduct)
                 self.save2UserDefaults()
-                self.iAPWrapper.getReceipt(isNeedToUpdate: self.receiptAlwaysFromServer) { (receipt) in
+                self.iAPWrapper.getReceipt(from: self.receiptFrom) { (receipt) in
                     self.delegate?.DTPurchaseReturn(receipt: receipt, after: .fetch)
                 }
             }
@@ -97,7 +104,7 @@ extension DTIAPProvider {
     public func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> ()) {
         self.iAPWrapper.purchase(product: product) { (status, product, transaction) in
             completion(status)
-            self.iAPWrapper.getReceipt(isNeedToUpdate: self.receiptAlwaysFromServer) { (receipt) in
+            self.iAPWrapper.getReceipt(from: self.receiptFrom) { (receipt) in
                 self.delegate?.DTPurchaseReturn(receipt: receipt, after: .purchase)
             }
         }
@@ -108,7 +115,7 @@ extension DTIAPProvider {
     public func restorePurchase(completion: @escaping (DTPurchaseStatus) -> ()) {
         self.iAPWrapper.restorePurchase { (status, product, transaction) in
             completion(status)
-            self.iAPWrapper.getReceipt(isNeedToUpdate: self.receiptAlwaysFromServer) { (receipt) in
+            self.iAPWrapper.getReceipt(from: self.receiptFrom) { (receipt) in
                 self.delegate?.DTPurchaseReturn(receipt: receipt, after: .restore)
             }
         }
@@ -123,8 +130,8 @@ extension DTIAPProvider {
     /// - Parameters:
     ///   - isNeedToUpdate: forcibly get from server
     ///   - completion: callback block
-    func getReceipt(isNeedToUpdate: Bool, completion: @escaping (String) -> Void) {
-        self.iAPWrapper.getReceipt(isNeedToUpdate: isNeedToUpdate, completion: completion)
+    func getReceipt(from type: DTPurchaseReceiptType, completion: @escaping (String) -> Void) {
+        self.iAPWrapper.getReceipt(from: type, completion: completion)
     }
 
 }
