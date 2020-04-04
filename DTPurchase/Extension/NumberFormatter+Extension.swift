@@ -13,7 +13,6 @@ extension NumberFormatter {
     func currencyFormatter() -> NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 0
         return formatter
     }
 }
