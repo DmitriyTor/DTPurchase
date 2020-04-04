@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     
     # 1
-    s.platforms = { :ios => "10.0", :osx => "10.14", :watchos => "5.0", :tvos => "10.0" }
+    s.platforms = { :ios => "11.2", :osx => "10.14", :watchos => "5.0", :tvos => "10.0" }
     s.name = "DTPurchase"
     s.summary = "DTPurchase swift 5.1 framework for simple development amazing apps."
     s.requires_arc = true
