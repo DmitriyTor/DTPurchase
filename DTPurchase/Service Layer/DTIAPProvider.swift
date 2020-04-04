@@ -9,27 +9,39 @@
 import UIKit
 
 public final class DTIAPProvider {
-    
-    private let defaults = UserDefaults.standard
+
+    // MARK: - Properties
+    private let defaults: UserDefaults
     private let iAPWrapper = DTIAPWrapper()
-    
+    private var availableProduct = [DTIAPProduct]()
+
     /// Delegate for extension your purchase class (f.e. can return receipt)
     public weak var delegate: DTPurchaseDelegate?
-    
+
     /// If true - receipt get from Apple Server and then returned in DTPurchaseReturn(receipt...) func
     public var receiptAlwaysFromServer = false
-    
-    /// Init with get producttt ids from Info.plist by key DTPurchase!
-    public init() {
+
+    /// Init with get products ids from Info.plist by key DTPurchase!
+    /// - Parameter defaults: UserDefaults - Optional parameter
+    public init(on defaults: UserDefaults = UserDefaults.standard) {
+        self.defaults = defaults
         self.setProductIds()
     }
-    
+
     /// Init with id purchase in init
-    /// - Parameter productIDs: product ids from app connet
-    public init(productIDs: [String]) {
+    /// - Parameters:
+    ///     - productIDs: product ids from appstore connet
+    ///     - defaults: UserDefaults - Optional parameter
+    public init(productIDs: [String], on defaults: UserDefaults = UserDefaults.standard) {
+        self.defaults = defaults
         self.setProductIds(productIDs: productIDs)
     }
-    
+
+}
+
+// MARK: - Private
+extension DTIAPProvider {
+
     private func setProductIds(productIDs: [String]? = nil) {
         if let ids = productIDs {
             self.iAPWrapper.setProductIds(ids: ids)
@@ -42,10 +54,8 @@ public final class DTIAPProvider {
         self.iAPWrapper.setProductIds(ids: ids)
         self.fetchProducts(completion: nil)
     }
-    
-    private var availableProduct = [DTIAPProduct]()
-    
-    /// Достаем продукты с сервака эппл
+
+    /// Get products from Apple server
     private func fetchProducts(completion: (([DTIAPProduct]) -> Void)?) {
         self.iAPWrapper.fetchAvailableProducts { (products, status) in
             if status.status != .fetched {
@@ -60,10 +70,11 @@ public final class DTIAPProvider {
             }
         }
     }
+
 }
 
 extension DTIAPProvider {
-    
+
     /// List of available products
     public func getAvailableItem(completion: @escaping([DTIAPProduct]) -> Void) {
         if self.availableProduct.count > 0 {
@@ -72,17 +83,18 @@ extension DTIAPProvider {
             self.fetchProducts(completion: completion)
         }
     }
-    
+
     /// Force update products
     /// - Parameter completion: callback block with products
     public func updateAvailableItem(completion: @escaping([DTIAPProduct]) -> Void) {
         self.fetchProducts(completion: completion)
     }
-    
+
     /// Method for bought product
-    /// - Parameter product: product
-    /// - Parameter completion: callback block
-    public func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> () ) {
+    /// - Parameters:
+    ///     - product: product
+    ///     - completion: callback block
+    public func purchaseProduct(product: DTIAPProduct, completion: @escaping (DTPurchaseStatus) -> ()) {
         self.iAPWrapper.purchase(product: product) { (status, product, transaction) in
             completion(status)
             self.iAPWrapper.getReceipt(isNeedToUpdate: self.receiptAlwaysFromServer) { (receipt) in
@@ -90,7 +102,7 @@ extension DTIAPProvider {
             }
         }
     }
-    
+
     /// Restore purchase
     /// - Parameter completion: callback block
     public func restorePurchase(completion: @escaping (DTPurchaseStatus) -> ()) {
@@ -101,16 +113,12 @@ extension DTIAPProvider {
             }
         }
     }
-    
+
     /// Clean local products
     public func cleanData() {
         defaults.set(nil, forKey: DTDefaultsKeys.iap_purchase_cache)
     }
-    
-    public func getOnlineReceipt(completion: @escaping (String) -> Void) {
-        self.getReceipt(isNeedToUpdate: true, completion: completion)
-    }
-    
+
     /// Request receipt
     /// - Parameters:
     ///   - isNeedToUpdate: forcibly get from server
@@ -118,13 +126,13 @@ extension DTIAPProvider {
     func getReceipt(isNeedToUpdate: Bool, completion: @escaping (String) -> Void) {
         self.iAPWrapper.getReceipt(isNeedToUpdate: isNeedToUpdate, completion: completion)
     }
-    
+
 }
 
 // MARK: - For cache products
 
 extension DTIAPProvider {
-    
+
     /// запись продуктов в кеш
     private func save2UserDefaults() {
         let encoder = JSONEncoder()
@@ -132,7 +140,7 @@ extension DTIAPProvider {
             defaults.set(encoded, forKey: DTDefaultsKeys.iap_purchase_cache)
         }
     }
-    
+
     /// получение продуктов из кеша если нет инета
     private func getProductsFromUserDefaults() {
         if let savedProducts = defaults.object(forKey: DTDefaultsKeys.iap_purchase_cache) as? Data {
