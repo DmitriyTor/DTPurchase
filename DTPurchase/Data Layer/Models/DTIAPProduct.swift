@@ -12,14 +12,14 @@ import StoreKit
 public struct DTIAPProduct: Codable {
     
     public let productIdentifier: String
-    public let price: Int
+    public let price: Double
     public let title: String
     public let description: String
     public let priceLocale: String
     
     internal init(product: SKProduct) {
         self.productIdentifier = product.productIdentifier
-        self.price = product.price.intValue
+        self.price = product.price.doubleValue
         self.title = product.localizedTitle
         self.description = product.localizedDescription
         self.priceLocale = product.localizedPrice
