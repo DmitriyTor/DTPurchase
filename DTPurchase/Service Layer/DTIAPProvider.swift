@@ -63,13 +63,14 @@ extension DTIAPProvider {
     }
 
     /// Get products from Apple server
-    private func fetchProducts(completion: (([DTIAPProduct]) -> Void)?) {
+    private func fetchProducts(completion: (([DTIAPProduct], DTPurchaseStatus) -> Void)?) {
         self.iAPWrapper.fetchAvailableProducts { (products, status) in
             if status.status != .fetched {
                 self.getProductsFromUserDefaults()
             } else {
                 self.availableProduct = products
-                completion?(self.availableProduct)
+                let status = DTPurchaseStatus(status: .fetched, detailError: nil)
+                completion?(self.availableProduct, status)
                 self.save2UserDefaults()
                 self.iAPWrapper.getReceipt(from: self.receiptFrom) { (receipt) in
                     self.delegate?.DTPurchaseReturn(receipt: receipt, after: .fetch)
@@ -83,9 +84,10 @@ extension DTIAPProvider {
 extension DTIAPProvider {
 
     /// List of available products
-    public func getAvailableItem(completion: @escaping([DTIAPProduct]) -> Void) {
+    public func getAvailableItem(completion: @escaping([DTIAPProduct], DTPurchaseStatus) -> Void) {
         if self.availableProduct.count > 0 {
-            completion(self.availableProduct)
+            let status = DTPurchaseStatus(status: .fetched, detailError: "Using local purchase")
+            completion(self.availableProduct, status)
         } else {
             self.fetchProducts(completion: completion)
         }
@@ -93,7 +95,7 @@ extension DTIAPProvider {
 
     /// Force update products
     /// - Parameter completion: callback block with products
-    public func updateAvailableItem(completion: @escaping([DTIAPProduct]) -> Void) {
+    public func updateAvailableItem(completion: @escaping([DTIAPProduct], DTPurchaseStatus) -> Void) {
         self.fetchProducts(completion: completion)
     }
 
