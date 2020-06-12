@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "DTPurchase",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "DTPurchase", targets: ["DTPurchase"]),
     ],
