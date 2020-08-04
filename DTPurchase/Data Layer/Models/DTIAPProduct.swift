@@ -25,7 +25,7 @@ public struct DTIAPProduct: Codable {
         self.description = product.localizedDescription
         self.priceLocale = product.localizedPrice
 
-        if let period = product.subscriptionPeriod, let periodUnit = DTPeriodUnit(rawValue: period.unit.rawValue) {
+        if #available(iOS 11.2, *), let period = product.subscriptionPeriod, let periodUnit = DTPeriodUnit(rawValue: period.unit.rawValue) {
             self.subscriptionPeriod = DTProductSubscriptionPeriod(numberOfUnits: period.numberOfUnits, unit: periodUnit)
         } else {
             self.subscriptionPeriod = nil
